@@ -47,9 +47,9 @@ This library has helpers for performing these tasks and more.
 ## Performance
 
 When performing conversions on a large number of pixels, a significant chunk of
-time was spent creating fresh arrays or objects to hold RGB triplets. Thus for
-performance purposes, this library minimizes object creation and copying as much
-as possible.
+time can be spent creating fresh arrays or objects to hold RGB triplets. Thus,
+for performance purposes, this library minimizes object creation and copying as
+much as possible.
 
 When a Turbo RGB triplet is returned from the colormap, it will be the same
 Uint8ClampedArray each time. That is, there are 256 Uint8ClampedArray
