@@ -155,10 +155,11 @@ converted from grayscale to Turbo. The alpha channel is copied as-is.
 
 ### :gear: colormap
 
-The exact Turbo colormap as defined by Google, represented as an array of
-Float32Arrays, all subarrays of a larger array and thus backed by a single
-ArrayBuffer. Indexing into this array with an intensity in the range 0-255
-will return the corresponding normalized Turbo value.
+The exact Turbo colormap [as defined by Google](https://gist.github.com/mikhailov-work/ee72ba4191942acecc03fe6da94fc73f),
+represented as an array of Float32Arrays, all subarrays of a larger array and
+thus backed by a single ArrayBuffer. Indexing into this array with an
+intensity in the range 0-255 will return the corresponding normalized Turbo
+value.
 
 | Constant | Type |
 | ---------- | ---------- |

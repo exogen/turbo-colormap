@@ -31,8 +31,10 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "next dev demo",
-    "build": "tsup src/index.ts --format cjs,esm --clean",
-    "build:docs": "next build demo && touch docs/.nojekyll"
+    "build": "npm run build:dist && npm run build:readme && npm run build:pages",
+    "build:dist": "tsup src/index.ts --format cjs,esm --clean",
+    "build:pages": "next build demo && touch docs/.nojekyll",
+    "build:readme": "tsdoc --src=src/index.ts"
   },
   "devDependencies": {
     "@types/node": "22.7.4",
