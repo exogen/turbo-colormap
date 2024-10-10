@@ -22,8 +22,8 @@ npm install turbo-colormap
 
 ## Motivation
 
-Some tools generate depth maps using the Turbo colormap; others expect depth
-maps to be represented in grayscale. For example, [displacement maps in Three.js](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial.displacementMap):
+Some tools generate depth maps using the Turbo colormap, while others expect
+depth maps to be represented in grayscale. For example, [displacement maps in Three.js](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial.displacementMap):
 
 > The displacement texture is an image where the value of each pixel (white
 > being the highest) is mapped against, and repositions, the vertices of the
