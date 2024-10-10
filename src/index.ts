@@ -238,8 +238,8 @@ function normalizedToIntensity(value: number): number {
  * ArrayBuffer (or the provided `targetBuffer`) with the RGB pixel values
  * converted from Turbo to grayscale. The alpha channel is copied as-is.
  *
- * @param buffer A buffer containing RGBA intensities, like those backing
- *   ImageData instances.
+ * @param buffer A buffer containing RGBA intensities, such as one backing
+ *   an ImageData instance.
  * @param targetBuffer A same-sized buffer to write converted RGBA intensities
  *   to. If not provided, one will automatically be created. You can pass the
  *   same buffer provided as input to convert in-place.
