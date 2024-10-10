@@ -61,10 +61,10 @@ into your own array first.
 
 Any RGB triplet parameters accepted by the functions in this library need only
 to be array-like. This reduces the need for copying, because you can supply
-an existing `TypedArray` or a subarray backed by a single `ArrayBuffer`.
+an existing `TypedArray` or a subarray backed by an existing `ArrayBuffer`.
 
 When snapping colors to the Turbo colormap, a pre-initialized k-d tree is used
-to perform nearest-neighbor search. Color similarity it judged via simple
+to perform nearest-neighbor search. Color similarity is judged via simple
 Euclidian distance in RGB space. Other methods may result in small visual
 improvements, but are slower.
 
