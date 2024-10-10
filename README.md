@@ -88,18 +88,30 @@ simple lookup by array index.
 | ---------- | ---------- |
 | `intensityToTurbo` | `(value: number) => Color` |
 
+Parameters:
+
+* `value`: An integer in the range 0-255.
+
+
 ### :gear: snapColorToTurbo
 
 Accepts an arbitrary RGB triplet and returns the nearest color (by Euclidian
 distance) in the Turbo colormap. There is no interpolation; one of the 256
 colors in the exact Turbo palette is always returned.
 
-For performance, this uses a pre-initialized k-d tree to perform
-nearest-neighbor search.
+For performance, this uses a pre-initialized k-d tree to perform nearest-neighbor
+search.
 
 | Function | Type |
 | ---------- | ---------- |
 | `snapColorToTurbo` | `(rgbColor: Color, cache?: Map<string, number> or undefined) => Uint8ClampedArray` |
+
+Parameters:
+
+* `rgbColor`: An array-like RGB triplet.
+* `cache`: A Map to use as a lookup cache, to avoid repeated nearest-neighbor
+searches.
+
 
 ### :gear: snapColorToIntensity
 
@@ -115,8 +127,7 @@ Parameters:
 
 * `rgbColor`: An array-like RGB triplet.
 * `cache`: A Map to use as a lookup cache, to avoid repeated nearest-neighbor
-searches. If not provided, a temporary one will be used for each function
-call.
+searches.
 
 
 ### :gear: snapNormalizedToTurbo

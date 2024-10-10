@@ -135,6 +135,10 @@ const rgbTree = new KDTree(rgbColormap, 3);
 /**
  * Convert an integer in the range 0-255 to a Turbo RGB triplet. This is a
  * simple lookup by array index.
+ *
+ * @param value An integer in the range 0-255.
+ *
+ * @returns A Uint8ClampedArray Turbo RGB triplet.
  */
 export function intensityToTurbo(value: number): Color {
   return rgbColormap[value];
@@ -145,8 +149,14 @@ export function intensityToTurbo(value: number): Color {
  * distance) in the Turbo colormap. There is no interpolation; one of the 256
  * colors in the exact Turbo palette is always returned.
  *
- * For performance, this uses a pre-initialized k-d tree to perform
- * nearest-neighbor search.
+ * For performance, this uses a pre-initialized k-d tree to perform nearest-neighbor
+ * search.
+ *
+ * @param rgbColor An array-like RGB triplet.
+ * @param cache A Map to use as a lookup cache, to avoid repeated nearest-neighbor
+ *   searches.
+ *
+ * @returns A Turbo RGB triplet in a Uint8ClampedArray.
  */
 export function snapColorToTurbo(rgbColor: Color, cache?: Map<string, number>) {
   const index = snapColorToIntensity(rgbColor, cache);
@@ -160,8 +170,9 @@ export function snapColorToTurbo(rgbColor: Color, cache?: Map<string, number>) {
  *
  * @param rgbColor An array-like RGB triplet.
  * @param cache A Map to use as a lookup cache, to avoid repeated nearest-neighbor
- *   searches. If not provided, a temporary one will be used for each function
- *   call.
+ *   searches.
+ *
+ * @returns An integer in the range 0-255.
  */
 export function snapColorToIntensity(
   rgbColor: Color,
@@ -199,6 +210,8 @@ export function snapNormalizedToTurbo(value: number): Color {
  * Turbo, a new in-between color is generated via simple Euclidian interpolation.
  *
  * @param value A number in the range 0-1.
+ *
+ * @returns A Turbo RGB triplet in a standard JavaScript Array.
  */
 export function interpolateNormalizedToTurbo(value: number): Color {
   const a = Math.floor(value * 255);
@@ -223,6 +236,8 @@ export function interpolateNormalizedToTurbo(value: number): Color {
  * averaged.
  *
  * @param gray An array-like RGB triplet.
+ *
+ * @returns A Turbo RGB triplet in a Uint8ClampedArray.
  */
 export function grayscaleToTurbo(gray: Color) {
   const r = gray[0];
