@@ -49,8 +49,8 @@ This library has helpers for performing these tasks and more.
 ## :toolbox: Functions
 
 - [intensityToTurbo](#gear-intensitytoturbo)
-- [snapToTurbo](#gear-snaptoturbo)
-- [snapToIntensity](#gear-snaptointensity)
+- [snapColorToTurbo](#gear-snapcolortoturbo)
+- [snapColorToIntensity](#gear-snapcolortointensity)
 - [snapNormalizedToTurbo](#gear-snapnormalizedtoturbo)
 - [interpolateNormalizedToTurbo](#gear-interpolatenormalizedtoturbo)
 - [grayscaleToTurbo](#gear-grayscaletoturbo)
@@ -67,7 +67,7 @@ simple lookup by array index.
 | ---------- | ---------- |
 | `intensityToTurbo` | `(value: number) => Color` |
 
-### :gear: snapToTurbo
+### :gear: snapColorToTurbo
 
 Accepts an arbitrary RGB triplet and returns the nearest color (by Euclidian
 distance) in the Turbo colormap. There is no interpolation; one of the 256
@@ -78,9 +78,9 @@ nearest-neighbor search.
 
 | Function | Type |
 | ---------- | ---------- |
-| `snapToTurbo` | `(rgbColor: Color, cache?: Map<string, number> or undefined) => Uint8ClampedArray` |
+| `snapColorToTurbo` | `(rgbColor: Color, cache?: Map<string, number> or undefined) => Uint8ClampedArray` |
 
-### :gear: snapToIntensity
+### :gear: snapColorToIntensity
 
 Accepts an arbitrary RGB triplet and returns the index (0-255) of the nearest
 Turbo color. This index can also be used directly as a grayscale intensity
@@ -88,7 +88,7 @@ value.
 
 | Function | Type |
 | ---------- | ---------- |
-| `snapToIntensity` | `(rgbColor: Color, cache?: Map<string, number> or undefined) => number` |
+| `snapColorToIntensity` | `(rgbColor: Color, cache?: Map<string, number> or undefined) => number` |
 
 ### :gear: snapNormalizedToTurbo
 

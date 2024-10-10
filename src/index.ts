@@ -148,8 +148,8 @@ export function intensityToTurbo(value: number): Color {
  * For performance, this uses a pre-initialized k-d tree to perform
  * nearest-neighbor search.
  */
-export function snapToTurbo(rgbColor: Color, cache?: Map<string, number>) {
-  const index = snapToIntensity(rgbColor, cache);
+export function snapColorToTurbo(rgbColor: Color, cache?: Map<string, number>) {
+  const index = snapColorToIntensity(rgbColor, cache);
   return rgbColormap[index];
 }
 
@@ -158,7 +158,7 @@ export function snapToTurbo(rgbColor: Color, cache?: Map<string, number>) {
  * Turbo color. This index can also be used directly as a grayscale intensity
  * value.
  */
-export function snapToIntensity(
+export function snapColorToIntensity(
   rgbColor: Color,
   cache?: Map<string, number>
 ): number {
@@ -226,7 +226,8 @@ export function grayscaleToTurbo(gray: Color) {
 }
 
 /**
- * Convert a float in the range 0-1 to an integer in the range 0-255.
+ * Convert a float in the range 0-1 to an integer in the range 0-255. This is
+ * not specific to Turbo.
  */
 function normalizedToIntensity(value: number): number {
   return Math.floor(value * 255);
@@ -247,7 +248,7 @@ export function convertTurboBufferToGrayscale(
   const targetArray = new Uint8ClampedArray(targetBuffer);
   for (let i = 0; i < len; i += 4) {
     const color = new Uint8ClampedArray(buffer, i, 4);
-    const intensity = snapToIntensity(color, cache);
+    const intensity = snapColorToIntensity(color, cache);
     targetArray[i] = intensity;
     targetArray[i + 1] = intensity;
     targetArray[i + 2] = intensity;
@@ -269,7 +270,7 @@ export function convertColorBufferToTurbo(
   const targetArray = new Uint8ClampedArray(targetBuffer);
   for (let i = 0; i < len; i += 4) {
     const color = new Uint8ClampedArray(buffer, i, 4);
-    const turboColor = snapToTurbo(color);
+    const turboColor = snapColorToTurbo(color);
     targetArray[i] = turboColor[0];
     targetArray[i + 1] = turboColor[1];
     targetArray[i + 2] = turboColor[2];
