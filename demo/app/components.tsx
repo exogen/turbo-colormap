@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { intensityToTurbo, snapToTurbo } from "../..";
+import { intensityToTurbo, snapColorToTurbo } from "../..";
 import ColorSlider from "../src/ColorSlider";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/css";
@@ -105,7 +105,7 @@ export function Quantizer() {
       Math.round(color.rgb.g),
       Math.round(color.rgb.b),
     ];
-    return snapToTurbo([r, g, b]);
+    return snapColorToTurbo([r, g, b]);
   }, [color]);
 
   return (
@@ -121,7 +121,6 @@ export function Quantizer() {
             background: color.hex,
           }}
         />
-
         <div
           style={{
             width: 160,
