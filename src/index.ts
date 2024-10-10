@@ -120,7 +120,7 @@ for (let i = 0; i < colormap.length; i++) {
  * The Turbo colormap represented as an array of Uint8ClampedArrays, all
  * subarrays of a larger array and thus backed by a single ArrayBuffer. Indexing
  * into this array with an intensity in the range 0-255 will return the
- * corresponding Turbo value as RGB intensities; the `intensityToRGB`
+ * corresponding Turbo value as RGB intensities; the `intensityToTurbo`
  * helper does exactly that.
  */
 export const rgbColormap: Array<Uint8ClampedArray> = new Array(256);
@@ -136,7 +136,7 @@ const rgbTree = new KDTree(rgbColormap, 3);
  * Convert an integer in the range 0-255 to a Turbo RGB triplet. This is a
  * simple lookup by array index.
  */
-export function intensityToRGB(value: number): Color {
+export function intensityToTurbo(value: number): Color {
   return rgbColormap[value];
 }
 

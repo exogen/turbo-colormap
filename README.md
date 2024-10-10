@@ -44,13 +44,11 @@ Turbo color, akin to quantizing an image with the Turbo palette.
 
 This library has helpers for performing these tasks and more.
 
-## Exports
-
 <!-- TSDOC_START -->
 
 ## :toolbox: Functions
 
-- [intensityToRGB](#gear-intensitytorgb)
+- [intensityToTurbo](#gear-intensitytoturbo)
 - [snapToTurbo](#gear-snaptoturbo)
 - [snapToIntensity](#gear-snaptointensity)
 - [snapNormalizedToRGB](#gear-snapnormalizedtorgb)
@@ -60,14 +58,14 @@ This library has helpers for performing these tasks and more.
 - [convertColorBufferToTurbo](#gear-convertcolorbuffertoturbo)
 - [convertGrayscaleBufferToTurbo](#gear-convertgrayscalebuffertoturbo)
 
-### :gear: intensityToRGB
+### :gear: intensityToTurbo
 
 Convert an integer in the range 0-255 to a Turbo RGB triplet. This is a
 simple lookup by array index.
 
 | Function | Type |
 | ---------- | ---------- |
-| `intensityToRGB` | `(value: number) => Color` |
+| `intensityToTurbo` | `(value: number) => Color` |
 
 ### :gear: snapToTurbo
 
@@ -116,7 +114,7 @@ averaged.
 
 | Function | Type |
 | ---------- | ---------- |
-| `grayscaleToTurbo` | `(gray: Color) => Color` |
+| `grayscaleToTurbo` | `(gray: Color) => any` |
 
 ### :gear: convertTurboBufferToGrayscale
 
@@ -171,7 +169,7 @@ value.
 The Turbo colormap represented as an array of Uint8ClampedArrays, all
 subarrays of a larger array and thus backed by a single ArrayBuffer. Indexing
 into this array with an intensity in the range 0-255 will return the
-corresponding Turbo value as RGB intensities; the `intensityToRGB`
+corresponding Turbo value as RGB intensities; the `intensityToTurbo`
 helper does exactly that.
 
 | Constant | Type |
