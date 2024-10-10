@@ -62,7 +62,8 @@ into your own array first.
 
 When snapping colors to the Turbo colormap, a kd-tree is used to perform
 nearest-neighbor search. Color similarity it judged via simple Euclidian
-distance in RGB space.
+distance in RGB space. Other methods may result in small visual improvements,
+but are slower.
 
 <!-- TSDOC_START -->
 
