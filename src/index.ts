@@ -228,6 +228,8 @@ export function grayscaleToTurbo(gray: Color) {
 /**
  * Convert a float in the range 0-1 to an integer in the range 0-255. This is
  * not specific to Turbo.
+ *
+ * @param value - A number in the range 0-1.
  */
 function normalizedToIntensity(value: number): number {
   return Math.floor(value * 255);
@@ -270,6 +272,15 @@ export function convertTurboBufferToGrayscale(
  * Given an ArrayBuffer-like `buffer` containing RGBA intensities, return a new
  * ArrayBuffer (or the provided `targetBuffer`) with the RGB pixel values
  * converted from arbitrary color to Turbo. The alpha channel is copied as-is.
+ *
+ * @param buffer A buffer containing RGBA intensities, such as one backing
+ *   an ImageData instance.
+ * @param targetBuffer A same-sized buffer to write converted RGBA intensities
+ *   to. If not provided, one will automatically be created. You can pass the
+ *   same buffer provided as input to convert in-place.
+ * @param options.cache A Map to use as a lookup cache, to avoid repeated
+ *   nearest-neighbor searches. If not provided, a temporary one will be used
+ *   for each function call.
  */
 export function convertColorBufferToTurbo(
   buffer: ArrayBufferLike,
@@ -294,6 +305,12 @@ export function convertColorBufferToTurbo(
  * Given an ArrayBuffer-like `buffer` containing RGBA intensities, return a new
  * ArrayBuffer (or the provided `targetBuffer`) with the RGB pixel values
  * converted from grayscale to Turbo. The alpha channel is copied as-is.
+ *
+ * @param buffer A buffer containing RGBA intensities, such as one backing
+ *   an ImageData instance.
+ * @param targetBuffer A same-sized buffer to write converted RGBA intensities
+ *   to. If not provided, one will automatically be created. You can pass the
+ *   same buffer provided as input to convert in-place.
  */
 export function convertGrayscaleBufferToTurbo(
   buffer: ArrayBufferLike,

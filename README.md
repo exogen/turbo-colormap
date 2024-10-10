@@ -172,6 +172,18 @@ converted from arbitrary color to Turbo. The alpha channel is copied as-is.
 | ---------- | ---------- |
 | `convertColorBufferToTurbo` | `(buffer: ArrayBufferLike, targetBuffer?: ArrayBufferLike, options?: { cache: Map<string, number>; }) => ArrayBufferLike` |
 
+Parameters:
+
+* `buffer`: A buffer containing RGBA intensities, such as one backing
+an ImageData instance.
+* `targetBuffer`: A same-sized buffer to write converted RGBA intensities
+to. If not provided, one will automatically be created. You can pass the
+same buffer provided as input to convert in-place.
+* `options.cache`: A Map to use as a lookup cache, to avoid repeated
+nearest-neighbor searches. If not provided, a temporary one will be used
+for each function call.
+
+
 ### :gear: convertGrayscaleBufferToTurbo
 
 Given an ArrayBuffer-like `buffer` containing RGBA intensities, return a new
@@ -181,6 +193,15 @@ converted from grayscale to Turbo. The alpha channel is copied as-is.
 | Function | Type |
 | ---------- | ---------- |
 | `convertGrayscaleBufferToTurbo` | `(buffer: ArrayBufferLike, targetBuffer?: ArrayBufferLike) => ArrayBufferLike` |
+
+Parameters:
+
+* `buffer`: A buffer containing RGBA intensities, such as one backing
+an ImageData instance.
+* `targetBuffer`: A same-sized buffer to write converted RGBA intensities
+to. If not provided, one will automatically be created. You can pass the
+same buffer provided as input to convert in-place.
+
 
 
 ## :wrench: Constants
