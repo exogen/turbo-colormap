@@ -42,7 +42,7 @@ intensity value. In order to get the intensity values back out of an image,
 some type of nearest-color snapping needs to happen to find the best matching
 Turbo color, akin to quantizing an image with the Turbo palette.
 
-This library has helpers for performing these tasks and more.
+This library exports helpers for performing these tasks and more.
 
 ## Performance
 
