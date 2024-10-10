@@ -122,6 +122,9 @@ Accepts an arbitrary RGB triplet and returns the index (0-255) of the nearest
 Turbo color. This index can also be used directly as a grayscale intensity
 value.
 
+For performance, this uses a pre-initialized k-d tree to perform nearest-neighbor
+search.
+
 | Function | Type |
 | ---------- | ---------- |
 | `snapColorToIntensity` | `(rgbColor: Color, cache?: Map<string, number> or undefined) => number` |

@@ -168,6 +168,9 @@ export function snapColorToTurbo(rgbColor: Color, cache?: Map<string, number>) {
  * Turbo color. This index can also be used directly as a grayscale intensity
  * value.
  *
+ * For performance, this uses a pre-initialized k-d tree to perform nearest-neighbor
+ * search.
+ *
  * @param rgbColor An array-like RGB triplet.
  * @param cache A Map to use as a lookup cache, to avoid repeated nearest-neighbor
  *   searches.
