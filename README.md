@@ -51,8 +51,8 @@ This library has helpers for performing these tasks and more.
 - [intensityToTurbo](#gear-intensitytoturbo)
 - [snapToTurbo](#gear-snaptoturbo)
 - [snapToIntensity](#gear-snaptointensity)
-- [snapNormalizedToRGB](#gear-snapnormalizedtorgb)
-- [interpolateNormalizedToRGB](#gear-interpolatenormalizedtorgb)
+- [snapNormalizedToTurbo](#gear-snapnormalizedtoturbo)
+- [interpolateNormalizedToTurbo](#gear-interpolatenormalizedtoturbo)
 - [grayscaleToTurbo](#gear-grayscaletoturbo)
 - [convertTurboBufferToGrayscale](#gear-convertturbobuffertograyscale)
 - [convertColorBufferToTurbo](#gear-convertcolorbuffertoturbo)
@@ -90,16 +90,16 @@ value.
 | ---------- | ---------- |
 | `snapToIntensity` | `(rgbColor: Color, cache?: Map<string, number> or undefined) => number` |
 
-### :gear: snapNormalizedToRGB
+### :gear: snapNormalizedToTurbo
 
 Accepts a float in the range 0-1 and returns the nearest color in the
 indexed Turbo palette.
 
 | Function | Type |
 | ---------- | ---------- |
-| `snapNormalizedToRGB` | `(value: number) => Color` |
+| `snapNormalizedToTurbo` | `(value: number) => Color` |
 
-### :gear: interpolateNormalizedToRGB
+### :gear: interpolateNormalizedToTurbo
 
 Accepts a float in the range 0-1 and returns an interpolated Turbo color.
 That is, if the value lies between two of the 256 indexed colors defined by
@@ -107,7 +107,7 @@ Turbo, a new in-between color is generated via simple Euclidian interpolation.
 
 | Function | Type |
 | ---------- | ---------- |
-| `interpolateNormalizedToRGB` | `(value: number) => Color` |
+| `interpolateNormalizedToTurbo` | `(value: number) => Color` |
 
 ### :gear: grayscaleToTurbo
 

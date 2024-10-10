@@ -182,7 +182,7 @@ export function snapToIntensity(
  * Accepts a float in the range 0-1 and returns the nearest color in the
  * indexed Turbo palette.
  */
-export function snapNormalizedToRGB(value: number): Color {
+export function snapNormalizedToTurbo(value: number): Color {
   return intensityToTurbo(normalizedToIntensity(value));
 }
 
@@ -191,7 +191,7 @@ export function snapNormalizedToRGB(value: number): Color {
  * That is, if the value lies between two of the 256 indexed colors defined by
  * Turbo, a new in-between color is generated via simple Euclidian interpolation.
  */
-export function interpolateNormalizedToRGB(value: number): Color {
+export function interpolateNormalizedToTurbo(value: number): Color {
   const a = Math.floor(value * 255);
   const b = Math.min(255, a + 1);
   const f = value * 255 - a;
