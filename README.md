@@ -60,10 +60,10 @@ since it interpolates between Turbo colors.
 It is important you don’t mutate the returned RGB values without copying them
 into your own array first.
 
-When snapping colors to the Turbo colormap, a kd-tree is used to perform
-nearest-neighbor search. Color similarity it judged via simple Euclidian
-distance in RGB space. Other methods may result in small visual improvements,
-but are slower.
+When snapping colors to the Turbo colormap, a pre-initialized k-d tree is used
+to perform nearest-neighbor search. Color similarity it judged via simple
+Euclidian distance in RGB space. Other methods may result in small visual
+improvements, but are slower.
 
 <!-- TSDOC_START -->
 
@@ -150,6 +150,18 @@ converted from Turbo to grayscale. The alpha channel is copied as-is.
 | ---------- | ---------- |
 | `convertTurboBufferToGrayscale` | `(buffer: ArrayBufferLike, targetBuffer?: ArrayBufferLike, options?: { cache: Map<string, number>; }) => ArrayBufferLike` |
 
+Parameters:
+
+* `buffer`: - A buffer containing RGBA intensities, like those backing
+ImageData instances.
+* `targetBuffer`: - A same-sized buffer to write converted RGBA intensities
+to. If not provided, one will automatically be created. You can pass the
+same buffer provided as input to convert in-place.
+* `options.cache`: - A Map to use as a lookup cache, to avoid repeated
+nearest-neighbor searches. If not provided, a temporary one will be used
+for each function call.
+
+
 ### :gear: convertColorBufferToTurbo
 
 Given an ArrayBuffer-like `buffer` containing RGBA intensities, return a new
@@ -158,7 +170,7 @@ converted from arbitrary color to Turbo. The alpha channel is copied as-is.
 
 | Function | Type |
 | ---------- | ---------- |
-| `convertColorBufferToTurbo` | `(buffer: ArrayBufferLike, targetBuffer?: ArrayBufferLike) => ArrayBufferLike` |
+| `convertColorBufferToTurbo` | `(buffer: ArrayBufferLike, targetBuffer?: ArrayBufferLike, options?: { cache: Map<string, number>; }) => ArrayBufferLike` |
 
 ### :gear: convertGrayscaleBufferToTurbo
 

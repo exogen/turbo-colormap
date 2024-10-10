@@ -237,6 +237,15 @@ function normalizedToIntensity(value: number): number {
  * Given an ArrayBuffer-like `buffer` containing RGBA intensities, return a new
  * ArrayBuffer (or the provided `targetBuffer`) with the RGB pixel values
  * converted from Turbo to grayscale. The alpha channel is copied as-is.
+ *
+ * @param buffer - A buffer containing RGBA intensities, like those backing
+ *   ImageData instances.
+ * @param targetBuffer - A same-sized buffer to write converted RGBA intensities
+ *   to. If not provided, one will automatically be created. You can pass the
+ *   same buffer provided as input to convert in-place.
+ * @param options.cache - A Map to use as a lookup cache, to avoid repeated
+ *   nearest-neighbor searches. If not provided, a temporary one will be used
+ *   for each function call.
  */
 export function convertTurboBufferToGrayscale(
   buffer: ArrayBufferLike,
@@ -264,13 +273,15 @@ export function convertTurboBufferToGrayscale(
  */
 export function convertColorBufferToTurbo(
   buffer: ArrayBufferLike,
-  targetBuffer: ArrayBufferLike = new ArrayBuffer(buffer.byteLength)
+  targetBuffer: ArrayBufferLike = new ArrayBuffer(buffer.byteLength),
+  options: { cache: Map<string, number> } = { cache: new Map() }
 ) {
+  const { cache } = options;
   const len = buffer.byteLength;
   const targetArray = new Uint8ClampedArray(targetBuffer);
   for (let i = 0; i < len; i += 4) {
     const color = new Uint8ClampedArray(buffer, i, 4);
-    const turboColor = snapColorToTurbo(color);
+    const turboColor = snapColorToTurbo(color, cache);
     targetArray[i] = turboColor[0];
     targetArray[i + 1] = turboColor[1];
     targetArray[i + 2] = turboColor[2];
