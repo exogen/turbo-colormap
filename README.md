@@ -111,6 +111,14 @@ value.
 | ---------- | ---------- |
 | `snapColorToIntensity` | `(rgbColor: Color, cache?: Map<string, number> or undefined) => number` |
 
+Parameters:
+
+* `rgbColor`: - An array-like RGB triplet.
+* `cache`: A Map to use as a lookup cache, to avoid repeated nearest-neighbor
+searches. If not provided, a temporary one will be used for each function
+call.
+
+
 ### :gear: snapNormalizedToTurbo
 
 Accepts a float in the range 0-1 and returns the nearest color in the
@@ -119,6 +127,11 @@ indexed Turbo palette.
 | Function | Type |
 | ---------- | ---------- |
 | `snapNormalizedToTurbo` | `(value: number) => Color` |
+
+Parameters:
+
+* `value`: - A number in the range 0-1.
+
 
 ### :gear: interpolateNormalizedToTurbo
 
@@ -130,6 +143,11 @@ Turbo, a new in-between color is generated via simple Euclidian interpolation.
 | ---------- | ---------- |
 | `interpolateNormalizedToTurbo` | `(value: number) => Color` |
 
+Parameters:
+
+* `value`: - A number in the range 0-1.
+
+
 ### :gear: grayscaleToTurbo
 
 Convert a gray RGB triplet to a Turbo RGB triplet. If the color is not
@@ -139,6 +157,11 @@ averaged.
 | Function | Type |
 | ---------- | ---------- |
 | `grayscaleToTurbo` | `(gray: Color) => Color` |
+
+Parameters:
+
+* `gray`: - An array-like RGB triplet.
+
 
 ### :gear: convertTurboBufferToGrayscale
 

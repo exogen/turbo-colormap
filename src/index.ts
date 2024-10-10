@@ -157,6 +157,11 @@ export function snapColorToTurbo(rgbColor: Color, cache?: Map<string, number>) {
  * Accepts an arbitrary RGB triplet and returns the index (0-255) of the nearest
  * Turbo color. This index can also be used directly as a grayscale intensity
  * value.
+ *
+ * @param rgbColor - An array-like RGB triplet.
+ * @param cache A Map to use as a lookup cache, to avoid repeated nearest-neighbor
+ *   searches. If not provided, a temporary one will be used for each function
+ *   call.
  */
 export function snapColorToIntensity(
   rgbColor: Color,
@@ -181,6 +186,8 @@ export function snapColorToIntensity(
 /**
  * Accepts a float in the range 0-1 and returns the nearest color in the
  * indexed Turbo palette.
+ *
+ * @param value - A number in the range 0-1.
  */
 export function snapNormalizedToTurbo(value: number): Color {
   return intensityToTurbo(normalizedToIntensity(value));
@@ -190,6 +197,8 @@ export function snapNormalizedToTurbo(value: number): Color {
  * Accepts a float in the range 0-1 and returns an interpolated Turbo color.
  * That is, if the value lies between two of the 256 indexed colors defined by
  * Turbo, a new in-between color is generated via simple Euclidian interpolation.
+ *
+ * @param value - A number in the range 0-1.
  */
 export function interpolateNormalizedToTurbo(value: number): Color {
   const a = Math.floor(value * 255);
@@ -212,6 +221,8 @@ export function interpolateNormalizedToTurbo(value: number): Color {
  * Convert a gray RGB triplet to a Turbo RGB triplet. If the color is not
  * perfectly gray (same value for R, G, B) then their intensities will be
  * averaged.
+ *
+ * @param gray - An array-like RGB triplet.
  */
 export function grayscaleToTurbo(gray: Color) {
   const r = gray[0];
