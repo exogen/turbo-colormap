@@ -12,7 +12,7 @@ quick color and image conversions.
 Note: this library generates more faithful values than the d3 approximation of
 Turbo found in [d3-scale-chromatic](https://github.com/d3/d3-scale-chromatic).
 
-👉 **[Try the interactive demo page!](https://exogen.github.io/turbo-colormap/)**
+👉 **[Try the interactive demo page](https://exogen.github.io/turbo-colormap/)**
 
 ## Install
 

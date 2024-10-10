@@ -16,10 +16,11 @@ const DemoPage = () => {
         <a href="https://research.google/blog/turbo-an-improved-rainbow-colormap-for-visualization/">
           Turbo
         </a>
-        , an improved rainbow colormap for visualization, often used for depth
-        maps. In addition to the library, you can also use this demo page to
-        perform quick color and image conversions. Note: this library generates
-        more faithful values than the d3 approximation of Turbo found in{" "}
+        , an improved rainbow colormap for visual&shy;ization, often used for
+        depth maps. In addition to the library, you can also use this demo page
+        to perform quick color and image conversions. Note: this library
+        generates more faithful values than the d3 approx&shy;imation of Turbo
+        found in{" "}
         <a href="https://github.com/d3/d3-scale-chromatic">
           d3-scale-chromatic
         </a>
@@ -51,8 +52,8 @@ const DemoPage = () => {
           <em>nearest color</em>
         </h2>
         <p className={styles.Description}>
-          Snap arbitrary RGB colors to the quantized Turbo palette. This is
-          mostly useful for visualizations exported with an approximation of
+          Snap arbitrary RGB colors to the indexed Turbo palette. This is mostly
+          useful for visual&shy;izations exported with an approx&shy;imation of
           Turbo or a lossy format (like JPEG).
         </p>
         <p className={styles.Description}>

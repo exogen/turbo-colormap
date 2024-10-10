@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { intensityToRGB, snapToTurbo } from "../..";
+import { intensityToTurbo, snapToTurbo } from "../..";
 import ColorSlider from "../src/ColorSlider";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/css";
@@ -8,7 +8,7 @@ import styles from "./page.module.css";
 
 export function ColorConvert() {
   const [value, setValue] = useState(165);
-  const rgbColor = intensityToRGB(value);
+  const rgbColor = intensityToTurbo(value);
 
   return (
     <>

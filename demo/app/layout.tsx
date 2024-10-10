@@ -34,7 +34,7 @@ export default function RootLayout({
             Wanna do fancy stuff on the Web?
             <br />
             I’m available for consulting, just{" "}
-            <a href="https://brianbeck.com">get in touch!</a>
+            <a href="https://brianbeck.com">get&nbsp;in&nbsp;touch!</a>
           </div>
           <nav>
             <ul>
