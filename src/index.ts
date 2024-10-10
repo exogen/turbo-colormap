@@ -133,12 +133,20 @@ for (let i = 0; i < rgbColormap.length; i++) {
 const rgbTree = new KDTree(rgbColormap, 3);
 
 /**
- * Accepts an arbitrary RGB triplet and returns the nearest (Euclidian distance)
- * color in the Turbo colormap. There is no interpolation; one of the 256 colors
- * used to define the Turbo palette is always returned.
+ * Convert an integer in the range 0-255 to a Turbo RGB triplet. This is a
+ * simple lookup by array index.
  */
-export function quantizeRGB(rgbColor: Color, cache?: Map<string, number>) {
-  const index = rgbToIntensity(rgbColor, cache);
+export function intensityToRGB(value: number): Color {
+  return rgbColormap[value];
+}
+
+/**
+ * Accepts an arbitrary RGB triplet and returns the nearest color (by Euclidian
+ * distance) in the Turbo colormap. There is no interpolation; one of the 256
+ * colors in the exact Turbo palette is always returned.
+ */
+export function snapToTurbo(rgbColor: Color, cache?: Map<string, number>) {
+  const index = snapToIntensity(rgbColor, cache);
   return rgbColormap[index];
 }
 
@@ -147,7 +155,7 @@ export function quantizeRGB(rgbColor: Color, cache?: Map<string, number>) {
  * intensity can either be used directly as a grayscale value, or as an index
  * into the Turbo colormap.
  */
-export function rgbToIntensity(
+export function snapToIntensity(
   rgbColor: Color,
   cache?: Map<string, number>
 ): number {
@@ -168,9 +176,17 @@ export function rgbToIntensity(
 }
 
 /**
+ * Accepts a float in the range 0-1 and returns the nearest color in the
+ * indexed Turbo palette.
+ */
+export function snapNormalizedToRGB(value: number): Color {
+  return intensityToRGB(normalizedToIntensity(value));
+}
+
+/**
  * Accepts a float in the range 0-1 and returns an interpolated Turbo color.
- * That is, if the intensity lies between two of the 256 color stops defined by
- * Turbo, a new color is generated via simple Euclidian interpolation.
+ * That is, if the value lies between two of the 256 indexed colors defined by
+ * Turbo, a new in-between color is generated via simple Euclidian interpolation.
  */
 export function interpolateNormalizedToRGB(value: number): Color {
   const a = Math.floor(value * 255);
@@ -190,33 +206,11 @@ export function interpolateNormalizedToRGB(value: number): Color {
 }
 
 /**
- * Accepts a float in the range 0-1 and returns the nearest color in the
- * quantized Turbo palette.
- */
-export function snapNormalizedToRGB(value: number): Color {
-  return intensityToRGB(normalizedToIntensity(value));
-}
-
-/**
- * Convert a float in the range 0-1 to an integer in the range 0-255.
- */
-function normalizedToIntensity(value: number): number {
-  return Math.floor(value * 255);
-}
-
-/**
- * Convert an integer in the range 0-255 to a Turbo RGB triplet.
- */
-export function intensityToRGB(value: number): Color {
-  return rgbColormap[value];
-}
-
-/**
  * Convert a gray RGB triplet to a Turbo RGB triplet. If the color is not
  * perfectly gray (same value for R, G, B) then their intensities will be
  * averaged.
  */
-export function grayscaleToRGB(gray: Color) {
+export function grayscaleToTurbo(gray: Color) {
   const r = gray[0];
   const g = gray[1];
   const b = gray[2];
@@ -226,6 +220,13 @@ export function grayscaleToRGB(gray: Color) {
     const avg = Math.round((r + g + b) / 3);
     return intensityToRGB(avg);
   }
+}
+
+/**
+ * Convert a float in the range 0-1 to an integer in the range 0-255.
+ */
+function normalizedToIntensity(value: number): number {
+  return Math.floor(value * 255);
 }
 
 /**
@@ -243,7 +244,7 @@ export function convertTurboBufferToGrayscale(
   const targetArray = new Uint8ClampedArray(targetBuffer);
   for (let i = 0; i < len; i += 4) {
     const color = new Uint8ClampedArray(buffer, i, 4);
-    const intensity = rgbToIntensity(color, cache);
+    const intensity = snapToIntensity(color, cache);
     targetArray[i] = intensity;
     targetArray[i + 1] = intensity;
     targetArray[i + 2] = intensity;
@@ -265,7 +266,7 @@ export function convertColorBufferToTurbo(
   const targetArray = new Uint8ClampedArray(targetBuffer);
   for (let i = 0; i < len; i += 4) {
     const color = new Uint8ClampedArray(buffer, i, 4);
-    const turboColor = grayscaleToRGB(color);
+    const turboColor = snapToTurbo(color);
     targetArray[i] = turboColor[0];
     targetArray[i + 1] = turboColor[1];
     targetArray[i + 2] = turboColor[2];
@@ -287,7 +288,7 @@ export function convertGrayscaleBufferToTurbo(
   const targetArray = new Uint8ClampedArray(targetBuffer);
   for (let i = 0; i < len; i += 4) {
     const color = new Uint8ClampedArray(buffer, i, 4);
-    const turboColor = grayscaleToRGB(color);
+    const turboColor = grayscaleToTurbo(color);
     targetArray[i] = turboColor[0];
     targetArray[i + 1] = turboColor[1];
     targetArray[i + 2] = turboColor[2];

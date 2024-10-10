@@ -50,27 +50,36 @@ This library has helpers for performing these tasks and more.
 
 ## :toolbox: Functions
 
-- [quantizeRGB](#gear-quantizergb)
-- [rgbToIntensity](#gear-rgbtointensity)
-- [interpolateNormalizedToRGB](#gear-interpolatenormalizedtorgb)
-- [snapNormalizedToRGB](#gear-snapnormalizedtorgb)
 - [intensityToRGB](#gear-intensitytorgb)
-- [grayscaleToRGB](#gear-grayscaletorgb)
+- [snapToTurbo](#gear-snaptoturbo)
+- [snapToIntensity](#gear-snaptointensity)
+- [snapNormalizedToRGB](#gear-snapnormalizedtorgb)
+- [interpolateNormalizedToRGB](#gear-interpolatenormalizedtorgb)
+- [grayscaleToTurbo](#gear-grayscaletoturbo)
 - [convertTurboBufferToGrayscale](#gear-convertturbobuffertograyscale)
 - [convertColorBufferToTurbo](#gear-convertcolorbuffertoturbo)
 - [convertGrayscaleBufferToTurbo](#gear-convertgrayscalebuffertoturbo)
 
-### :gear: quantizeRGB
+### :gear: intensityToRGB
 
-Accepts an arbitrary RGB triplet and returns the nearest (Euclidian distance)
-color in the Turbo colormap. There is no interpolation; one of the 256 colors
-used to define the Turbo palette is always returned.
+Convert an integer in the range 0-255 to a Turbo RGB triplet. This is a
+simple lookup by array index.
 
 | Function | Type |
 | ---------- | ---------- |
-| `quantizeRGB` | `(rgbColor: Color, cache?: Map<string, number> or undefined) => Uint8ClampedArray` |
+| `intensityToRGB` | `(value: number) => Color` |
 
-### :gear: rgbToIntensity
+### :gear: snapToTurbo
+
+Accepts an arbitrary RGB triplet and returns the nearest color (by Euclidian
+distance) in the Turbo colormap. There is no interpolation; one of the 256
+colors in the exact Turbo palette is always returned.
+
+| Function | Type |
+| ---------- | ---------- |
+| `snapToTurbo` | `(rgbColor: Color, cache?: Map<string, number> or undefined) => Uint8ClampedArray` |
+
+### :gear: snapToIntensity
 
 Accepts an arbitrary RGB triplet and returns an intensity value (0-255). The
 intensity can either be used directly as a grayscale value, or as an index
@@ -78,36 +87,28 @@ into the Turbo colormap.
 
 | Function | Type |
 | ---------- | ---------- |
-| `rgbToIntensity` | `(rgbColor: Color, cache?: Map<string, number> or undefined) => number` |
-
-### :gear: interpolateNormalizedToRGB
-
-Accepts a float in the range 0-1 and returns an interpolated Turbo color.
-That is, if the intensity lies between two of the 256 color stops defined by
-Turbo, a new color is generated via simple Euclidian interpolation.
-
-| Function | Type |
-| ---------- | ---------- |
-| `interpolateNormalizedToRGB` | `(value: number) => Color` |
+| `snapToIntensity` | `(rgbColor: Color, cache?: Map<string, number> or undefined) => number` |
 
 ### :gear: snapNormalizedToRGB
 
 Accepts a float in the range 0-1 and returns the nearest color in the
-quantized Turbo palette.
+indexed Turbo palette.
 
 | Function | Type |
 | ---------- | ---------- |
 | `snapNormalizedToRGB` | `(value: number) => Color` |
 
-### :gear: intensityToRGB
+### :gear: interpolateNormalizedToRGB
 
-Convert an integer in the range 0-255 to a Turbo RGB triplet.
+Accepts a float in the range 0-1 and returns an interpolated Turbo color.
+That is, if the value lies between two of the 256 indexed colors defined by
+Turbo, a new in-between color is generated via simple Euclidian interpolation.
 
 | Function | Type |
 | ---------- | ---------- |
-| `intensityToRGB` | `(value: number) => Color` |
+| `interpolateNormalizedToRGB` | `(value: number) => Color` |
 
-### :gear: grayscaleToRGB
+### :gear: grayscaleToTurbo
 
 Convert a gray RGB triplet to a Turbo RGB triplet. If the color is not
 perfectly gray (same value for R, G, B) then their intensities will be
@@ -115,7 +116,7 @@ averaged.
 
 | Function | Type |
 | ---------- | ---------- |
-| `grayscaleToRGB` | `(gray: Color) => Color` |
+| `grayscaleToTurbo` | `(gray: Color) => Color` |
 
 ### :gear: convertTurboBufferToGrayscale
 
