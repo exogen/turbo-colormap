@@ -113,7 +113,7 @@ value.
 
 Parameters:
 
-* `rgbColor`: - An array-like RGB triplet.
+* `rgbColor`: An array-like RGB triplet.
 * `cache`: A Map to use as a lookup cache, to avoid repeated nearest-neighbor
 searches. If not provided, a temporary one will be used for each function
 call.
@@ -130,7 +130,7 @@ indexed Turbo palette.
 
 Parameters:
 
-* `value`: - A number in the range 0-1.
+* `value`: A number in the range 0-1.
 
 
 ### :gear: interpolateNormalizedToTurbo
@@ -145,7 +145,7 @@ Turbo, a new in-between color is generated via simple Euclidian interpolation.
 
 Parameters:
 
-* `value`: - A number in the range 0-1.
+* `value`: A number in the range 0-1.
 
 
 ### :gear: grayscaleToTurbo
@@ -160,7 +160,7 @@ averaged.
 
 Parameters:
 
-* `gray`: - An array-like RGB triplet.
+* `gray`: An array-like RGB triplet.
 
 
 ### :gear: convertTurboBufferToGrayscale
