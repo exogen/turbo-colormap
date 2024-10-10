@@ -57,7 +57,7 @@ singletons, one for each color in the palette. An exception is the
 `interpolateNormalizedToTurbo` function, which creates a new array each time
 since it interpolates between Turbo colors.
 
-It is important you don’t mutate the returns RGB values without copying them
+It is important you don’t mutate the returned RGB values without copying them
 into your own array first.
 
 When snapping colors to the Turbo colormap, a kd-tree is used to perform
