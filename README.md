@@ -152,12 +152,12 @@ converted from Turbo to grayscale. The alpha channel is copied as-is.
 
 Parameters:
 
-* `buffer`: - A buffer containing RGBA intensities, like those backing
+* `buffer`: A buffer containing RGBA intensities, like those backing
 ImageData instances.
-* `targetBuffer`: - A same-sized buffer to write converted RGBA intensities
+* `targetBuffer`: A same-sized buffer to write converted RGBA intensities
 to. If not provided, one will automatically be created. You can pass the
 same buffer provided as input to convert in-place.
-* `options.cache`: - A Map to use as a lookup cache, to avoid repeated
+* `options.cache`: A Map to use as a lookup cache, to avoid repeated
 nearest-neighbor searches. If not provided, a temporary one will be used
 for each function call.
 
