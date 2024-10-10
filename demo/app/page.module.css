@@ -1,0 +1,82 @@
+.Values {
+  align-self: stretch;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25em 1em;
+  font-size: calc(12rem / 16);
+  background: #fff;
+  padding: 12px 20px;
+  border-radius: 6px;
+  margin: 0 0 32px 0;
+}
+
+.Values dt {
+  justify-self: end;
+  font-family: var(--font-lora);
+  font-style: italic;
+}
+
+.Values dd {
+  font-family: var(--font-mono);
+  justify-self: flex-start;
+}
+
+.Canvas {
+  max-width: 50%;
+}
+
+.CodeBlock {
+  font-size: 1rem;
+  border: 1px solid #e8e8e8;
+  background: #fff;
+  padding: 8px 12px;
+}
+
+.CodeBlock code {
+  background: transparent;
+}
+
+.Canvases {
+  display: flex;
+  align-items: flex-start;
+}
+
+.Starter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+.Description {
+  font-size: calc(14rem / 16);
+  line-height: calc(20 / 14);
+  text-align: center;
+  text-wrap: balance;
+}
+
+.Quantizer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.Quantizer :global(.rcp-saturation) {
+  border-radius: 0;
+}
+
+.Quantizer :global(.rcp-field-label) {
+  text-transform: lowercase;
+  font-style: italic;
+}
+
+.PickerContainer {
+  flex: 1 1 auto;
+}
+
+.QuantizeOutput {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+}

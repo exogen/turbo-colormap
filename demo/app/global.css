@@ -1,0 +1,390 @@
+:root {
+  --pink-300: rgb(237, 168, 190);
+  --pink-400: rgb(209, 65, 111);
+  --pink-500: rgb(217, 74, 119);
+  --pink-600: rgb(200, 84, 121);
+  --pink-700: rgb(231, 106, 143);
+  --pink-800: rgb(252, 81, 136);
+  --pink-900: rgb(240, 116, 155);
+  --font-mono: "Roboto Mono", Menlo, Inconsolata, Monaco, Consolas, monospace;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  min-height: 100vh;
+  text-align: left;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.2;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: var(--pink-600);
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+body {
+  --line-height: calc(28 / 17);
+  background: url("/bars.png") rgb(247, 241, 235);
+  background-repeat: repeat-x;
+  background-position: 50% 0;
+  background-size: 125px 6px;
+  color: rgb(55, 53, 50);
+  font-family: var(--font-lora), Palatino, Baskerville, Georgia, Times,
+    "Times New Roman", serif;
+  font-size: calc(17rem / 16);
+  font-weight: 420;
+  line-height: var(--line-height);
+  padding: 0;
+}
+
+pre,
+code,
+tt,
+kbd {
+  font-family: var(--font-mono);
+}
+
+p code,
+h2 code,
+h3 code {
+  font-size: calc(16em / 18);
+  background: rgba(190, 190, 182, 0.3);
+  color: rgb(26, 19, 28);
+  border-radius: calc(3em / 16);
+  padding: calc(2em / 16) calc(4rem / 16);
+}
+
+.icon {
+  font-size: 2rem;
+  vertical-align: middle;
+}
+
+.byline {
+  font-size: calc(15rem / 16);
+  line-height: calc(20 / 15);
+  font-style: italic;
+  opacity: 0.7;
+  margin: 8px 0 0 0;
+}
+
+blockquote {
+  position: relative;
+  text-align: left;
+  margin: 0 28px;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  hanging-punctuation: none;
+}
+
+blockquote::before,
+blockquote::after {
+  position: absolute;
+  font-family: Georgia, serif;
+  font-size: calc(48em / 16);
+  line-height: 1;
+  margin-top: -0.03em;
+  padding: 0 6px;
+  opacity: 0.4;
+}
+
+blockquote::before {
+  right: 100%;
+  content: "“";
+}
+
+blockquote::after {
+  content: "”";
+}
+
+blockquote .snip {
+  opacity: 0.5;
+}
+
+figure {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+figure img {
+  margin: 0 auto;
+}
+
+figcaption,
+.caption {
+  font-size: calc(15rem / 16);
+  font-style: italic;
+  line-height: calc(20 / 15);
+  letter-spacing: -0.01em;
+  opacity: 0.8;
+  text-align: center;
+  margin: 8px 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  margin: 0;
+}
+
+footer {
+  margin-top: auto;
+  padding: 60px 32px 32px 32px;
+  background: url("/bars.png");
+  background-repeat: repeat-x;
+  background-position: 50% 100%;
+  background-size: 125px 6px;
+}
+
+footer ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+footer li {
+  margin: 0 calc(8rem / 16);
+}
+
+footer nav a:link {
+  display: block;
+  padding: calc(8rem / 16);
+}
+
+header a:link,
+header a:visited,
+footer nav a:link,
+footer nav a:visited {
+  color: rgb(87, 85, 86);
+}
+
+header a:hover,
+footer nav a:hover {
+  color: var(--pink-900);
+}
+
+.consulting {
+  font-size: calc(14rem / 16);
+  margin: 0 0 24px 0;
+  text-align: center;
+}
+
+.consulting a:link {
+  display: inline;
+  padding: 0;
+}
+
+.thanks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(14rem / 16);
+  margin: 0 0 20px 0;
+}
+
+.thanks p {
+  margin: 10px 0;
+}
+
+.thanks img {
+  display: block;
+}
+
+.thanks a:link {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.fleur {
+  font-size: calc(32rem / 16);
+  opacity: 0.3;
+  text-align: center;
+  margin: 0 0 32px 0;
+}
+
+aside,
+.aside {
+  border-radius: 3px;
+  margin: 0 -17px 0 -17px;
+  padding: 12px 16px;
+  color: #444;
+  font-size: calc(15rem / 16);
+  line-height: calc(24 / 15);
+}
+
+aside.attention,
+.aside.attention {
+  border: 1px solid rgb(221, 187, 150);
+  background: rgb(255, 242, 171);
+}
+
+aside.advice,
+.aside.advice {
+  border: 1px solid rgb(231, 207, 195);
+  background: rgb(255, 254, 249);
+}
+
+h1 {
+  font-size: calc(24rem / 16);
+  font-weight: 640;
+  line-height: calc(32 / 24);
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+h2 {
+  font-size: calc(20rem / 16);
+  font-weight: 640;
+  line-height: calc(28 / 20);
+  text-align: center;
+}
+
+strong {
+  font-weight: 640;
+}
+
+small {
+  font-size: calc(14em / 16);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin: 0 0.05em;
+}
+
+main {
+  --gap: clamp(1rem, 6vw, 3rem);
+  --full: minmax(var(--gap), 1fr);
+  --content: min(46rem, 100% - var(--gap) * 2);
+  --popout: minmax(0, 2rem);
+  --feature: minmax(0, 5rem);
+
+  display: grid;
+  grid-template-columns:
+    [full-start] var(--full)
+    [feature-start] var(--feature)
+    [popout-start] var(--popout)
+    [content-start] var(--content) [content-end]
+    var(--popout) [popout-end]
+    var(--feature) [feature-end]
+    var(--full) [full-end];
+
+  gap: 28px 0;
+  padding: 60px 0 0 0;
+  hanging-punctuation: first last;
+  text-align: left;
+}
+
+main > * {
+  grid-column: content;
+}
+
+.popout {
+  grid-column: popout;
+}
+
+.feature {
+  grid-column: feature;
+}
+
+.full {
+  grid-column: full;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  margin: 60px 0;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
