@@ -43,3 +43,139 @@ some type of nearest-color snapping needs to happen to find the best matching
 Turbo color, akin to quantizing an image with the Turbo palette.
 
 This library has helpers for performing these tasks and more.
+
+## Exports
+
+<!-- TSDOC_START -->
+
+## :toolbox: Functions
+
+- [quantizeRGB](#gear-quantizergb)
+- [rgbToIntensity](#gear-rgbtointensity)
+- [interpolateNormalizedToRGB](#gear-interpolatenormalizedtorgb)
+- [snapNormalizedToRGB](#gear-snapnormalizedtorgb)
+- [intensityToRGB](#gear-intensitytorgb)
+- [grayscaleToRGB](#gear-grayscaletorgb)
+- [convertTurboBufferToGrayscale](#gear-convertturbobuffertograyscale)
+- [convertColorBufferToTurbo](#gear-convertcolorbuffertoturbo)
+- [convertGrayscaleBufferToTurbo](#gear-convertgrayscalebuffertoturbo)
+
+### :gear: quantizeRGB
+
+Accepts an arbitrary RGB triplet and returns the nearest (Euclidian distance)
+color in the Turbo colormap. There is no interpolation; one of the 256 colors
+used to define the Turbo palette is always returned.
+
+| Function | Type |
+| ---------- | ---------- |
+| `quantizeRGB` | `(rgbColor: Color, cache?: Map<string, number> or undefined) => Uint8ClampedArray` |
+
+### :gear: rgbToIntensity
+
+Accepts an arbitrary RGB triplet and returns an intensity value (0-255). The
+intensity can either be used directly as a grayscale value, or as an index
+into the Turbo colormap.
+
+| Function | Type |
+| ---------- | ---------- |
+| `rgbToIntensity` | `(rgbColor: Color, cache?: Map<string, number> or undefined) => number` |
+
+### :gear: interpolateNormalizedToRGB
+
+Accepts a float in the range 0-1 and returns an interpolated Turbo color.
+That is, if the intensity lies between two of the 256 color stops defined by
+Turbo, a new color is generated via simple Euclidian interpolation.
+
+| Function | Type |
+| ---------- | ---------- |
+| `interpolateNormalizedToRGB` | `(value: number) => Color` |
+
+### :gear: snapNormalizedToRGB
+
+Accepts a float in the range 0-1 and returns the nearest color in the
+quantized Turbo palette.
+
+| Function | Type |
+| ---------- | ---------- |
+| `snapNormalizedToRGB` | `(value: number) => Color` |
+
+### :gear: intensityToRGB
+
+Convert an integer in the range 0-255 to a Turbo RGB triplet.
+
+| Function | Type |
+| ---------- | ---------- |
+| `intensityToRGB` | `(value: number) => Color` |
+
+### :gear: grayscaleToRGB
+
+Convert a gray RGB triplet to a Turbo RGB triplet. If the color is not
+perfectly gray (same value for R, G, B) then their intensities will be
+averaged.
+
+| Function | Type |
+| ---------- | ---------- |
+| `grayscaleToRGB` | `(gray: Color) => Color` |
+
+### :gear: convertTurboBufferToGrayscale
+
+Given an ArrayBuffer-like `buffer` containing RGBA intensities, return a new
+ArrayBuffer (or the provided `targetBuffer`) with the RGB pixel values
+converted from Turbo to grayscale. The alpha channel is copied as-is.
+
+| Function | Type |
+| ---------- | ---------- |
+| `convertTurboBufferToGrayscale` | `(buffer: ArrayBufferLike, targetBuffer?: ArrayBufferLike, options?: { cache: Map<string, number>; }) => ArrayBufferLike` |
+
+### :gear: convertColorBufferToTurbo
+
+Given an ArrayBuffer-like `buffer` containing RGBA intensities, return a new
+ArrayBuffer (or the provided `targetBuffer`) with the RGB pixel values
+converted from arbitrary color to Turbo. The alpha channel is copied as-is.
+
+| Function | Type |
+| ---------- | ---------- |
+| `convertColorBufferToTurbo` | `(buffer: ArrayBufferLike, targetBuffer?: ArrayBufferLike) => ArrayBufferLike` |
+
+### :gear: convertGrayscaleBufferToTurbo
+
+Given an ArrayBuffer-like `buffer` containing RGBA intensities, return a new
+ArrayBuffer (or the provided `targetBuffer`) with the RGB pixel values
+converted from grayscale to Turbo. The alpha channel is copied as-is.
+
+| Function | Type |
+| ---------- | ---------- |
+| `convertGrayscaleBufferToTurbo` | `(buffer: ArrayBufferLike, targetBuffer?: ArrayBufferLike) => ArrayBufferLike` |
+
+
+## :wrench: Constants
+
+- [colormap](#gear-colormap)
+- [rgbColormap](#gear-rgbcolormap)
+
+### :gear: colormap
+
+The exact Turbo colormap as defined by Google, represented as an array of
+Float32Arrays, all subarrays of a larger array and thus backed by a single
+ArrayBuffer. Indexing into this array with an intensity in the range 0-255
+will return the corresponding normalized Turbo value.
+
+| Constant | Type |
+| ---------- | ---------- |
+| `colormap` | `Float32Array[]` |
+
+### :gear: rgbColormap
+
+The Turbo colormap represented as an array of Uint8ClampedArrays, all
+subarrays of a larger array and thus backed by a single ArrayBuffer. Indexing
+into this array with an intensity in the range 0-255 will return the
+corresponding Turbo value as RGB intensities; the `intensityToRGB`
+helper does exactly that.
+
+| Constant | Type |
+| ---------- | ---------- |
+| `rgbColormap` | `Uint8ClampedArray[]` |
+
+
+
+<!-- TSDOC_END -->
