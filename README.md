@@ -65,7 +65,7 @@ an existing `TypedArray` or a subarray backed by an existing `ArrayBuffer`.
 
 When snapping colors to the Turbo colormap, a pre-initialized k-d tree is used
 to perform nearest-neighbor search. Color similarity is judged via simple
-Euclidian distance in RGB space. Other methods may result in small visual
+Euclidian distance in RGB space. Other methods may result in small perceptual
 improvements, but are slower.
 
 <!-- TSDOC_START -->
