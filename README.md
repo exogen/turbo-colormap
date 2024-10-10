@@ -52,10 +52,9 @@ for performance purposes, this library minimizes object creation and copying as
 much as possible.
 
 When a Turbo RGB triplet is returned from the colormap, it will be the same
-`Uint8ClampedArray` each time. That is, there are 256 `Uint8ClampedArray`
-singletons, one for each color in the palette. An exception is the
-`interpolateNormalizedToTurbo` function, which creates a new array each time
-since it interpolates between Turbo colors.
+`Uint8ClampedArray` each time (one for each color in the palette).  An exception
+is the `interpolateNormalizedToTurbo` function, which creates a new array each
+time since it interpolates between Turbo colors.
 
 It is important you don’t mutate the returned RGB values without copying them
 into your own array first.
