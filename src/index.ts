@@ -144,6 +144,9 @@ export function intensityToTurbo(value: number): Color {
  * Accepts an arbitrary RGB triplet and returns the nearest color (by Euclidian
  * distance) in the Turbo colormap. There is no interpolation; one of the 256
  * colors in the exact Turbo palette is always returned.
+ *
+ * For performance, this uses a pre-initialized k-d tree to perform
+ * nearest-neighbor search.
  */
 export function snapToTurbo(rgbColor: Color, cache?: Map<string, number>) {
   const index = snapToIntensity(rgbColor, cache);
@@ -151,9 +154,9 @@ export function snapToTurbo(rgbColor: Color, cache?: Map<string, number>) {
 }
 
 /**
- * Accepts an arbitrary RGB triplet and returns an intensity value (0-255). The
- * intensity can either be used directly as a grayscale value, or as an index
- * into the Turbo colormap.
+ * Accepts an arbitrary RGB triplet and returns the index (0-255) of the nearest
+ * Turbo color. This index can also be used directly as a grayscale intensity
+ * value.
  */
 export function snapToIntensity(
   rgbColor: Color,
@@ -180,7 +183,7 @@ export function snapToIntensity(
  * indexed Turbo palette.
  */
 export function snapNormalizedToRGB(value: number): Color {
-  return intensityToRGB(normalizedToIntensity(value));
+  return intensityToTurbo(normalizedToIntensity(value));
 }
 
 /**
@@ -215,10 +218,10 @@ export function grayscaleToTurbo(gray: Color) {
   const g = gray[1];
   const b = gray[2];
   if (r === g && r === b) {
-    return intensityToRGB(r);
+    return intensityToTurbo(r);
   } else {
     const avg = Math.round((r + g + b) / 3);
-    return intensityToRGB(avg);
+    return intensityToTurbo(avg);
   }
 }
 

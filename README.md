@@ -73,15 +73,18 @@ Accepts an arbitrary RGB triplet and returns the nearest color (by Euclidian
 distance) in the Turbo colormap. There is no interpolation; one of the 256
 colors in the exact Turbo palette is always returned.
 
+For performance, this uses a pre-initialized k-d tree to perform
+nearest-neighbor search.
+
 | Function | Type |
 | ---------- | ---------- |
 | `snapToTurbo` | `(rgbColor: Color, cache?: Map<string, number> or undefined) => Uint8ClampedArray` |
 
 ### :gear: snapToIntensity
 
-Accepts an arbitrary RGB triplet and returns an intensity value (0-255). The
-intensity can either be used directly as a grayscale value, or as an index
-into the Turbo colormap.
+Accepts an arbitrary RGB triplet and returns the index (0-255) of the nearest
+Turbo color. This index can also be used directly as a grayscale intensity
+value.
 
 | Function | Type |
 | ---------- | ---------- |
@@ -114,7 +117,7 @@ averaged.
 
 | Function | Type |
 | ---------- | ---------- |
-| `grayscaleToTurbo` | `(gray: Color) => any` |
+| `grayscaleToTurbo` | `(gray: Color) => Color` |
 
 ### :gear: convertTurboBufferToGrayscale
 
