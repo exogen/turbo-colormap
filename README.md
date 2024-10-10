@@ -44,6 +44,22 @@ Turbo color, akin to quantizing an image with the Turbo palette.
 
 This library has helpers for performing these tasks and more.
 
+## Performance
+
+When performing conversions on a large number of pixels, a significant chunk of
+time was spent creating fresh arrays or objects to hold RGB triplets. Thus for
+performance purposes, this library minimizes object creation and copying as much
+as possible.
+
+When a Turbo RGB triplet is returned from the colormap, it will be the same
+Uint8ClampedArray each time. That is, there are 256 Uint8ClampedArray
+singletons, one for each color in the palette. An exception is the
+`interpolateNormalizedToTurbo` function, which creates a new array each time
+since it interpolates between Turbo colors.
+
+It is important you don’t mutate the returns RGB values without copying them
+into your own array first.
+
 <!-- TSDOC_START -->
 
 ## :toolbox: Functions
