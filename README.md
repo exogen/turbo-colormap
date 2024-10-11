@@ -277,3 +277,12 @@ helper does exactly that.
 
 
 <!-- TSDOC_END -->
+
+<br><hr><br>
+
+<div align="center">
+  <img src="./demo/public/cocktail.depth.jpg">
+  <p>
+    <em>Image from my cocktail book, <a href="https://buymeacoffee.com/mosswood/e/303309">The Mosswood Cocktail Compendium</a>.</em>
+  </p>
+</div>
