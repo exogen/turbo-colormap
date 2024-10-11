@@ -29,6 +29,7 @@
   padding: 12px;
   border-radius: 3px;
   overflow: hidden;
+  min-height: 160px;
 }
 
 .Values {

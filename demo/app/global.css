@@ -100,7 +100,7 @@ textarea:not([rows]) {
 
 body {
   --line-height: calc(28 / 17);
-  background: url("/bars.png") rgb(247, 241, 235);
+  background: url("../public/bars.png") rgb(247, 241, 235);
   background-repeat: repeat-x;
   background-position: 50% 0;
   background-size: 125px 6px;
@@ -209,7 +209,7 @@ header {
 footer {
   margin-top: auto;
   padding: 60px 32px 32px 32px;
-  background: url("/bars.png");
+  background: url("../public/bars.png");
   background-repeat: repeat-x;
   background-position: 50% 100%;
   background-size: 125px 6px;
