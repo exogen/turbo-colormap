@@ -15,12 +15,14 @@ const toGradientStops = (colorStops: Color[]) => {
 };
 
 export default function ColorSlider({
+  label = "Select color",
   className,
   colorStops,
   scaleImage,
   value: valueFromProps,
   onChange,
 }: {
+  label?: string;
   className?: string;
   colorStops?: Color[];
   scaleImage?: string;
@@ -35,18 +37,20 @@ export default function ColorSlider({
       return {
         "--color-gradient": `url("${scaleImage}")`,
       } as React.CSSProperties;
-    } else {
+    } else if (colorStops) {
       const colorString = toGradientStops(colorStops).join(", ");
       return {
         "--color-gradient": `linear-gradient(to right, ${colorString})`,
       } as React.CSSProperties;
+    } else {
+      return {};
     }
   }, [colorStops, scaleImage]);
 
   return (
     <div className={`${styles.Container} ${className ?? ""}`}>
       <Range
-        label="Select your value"
+        label={label}
         step={1}
         min={0}
         max={255}

@@ -75,8 +75,8 @@ const DemoPage = () => {
           Snap arbitrary colors to the indexed Turbo palette. This can yield
           surprising results with much of the sRGB color space; it’s mostly
           useful for interpreting visual&shy;izations exported with an
-          approx&shy;imation of Turbo or a lossy format like JPEG, where the
-          colors won’t be in the Turbo lookup table.
+          approx&shy;imation of Turbo or a lossy format like JPEG, where not
+          every pixel will be in the Turbo lookup table.
         </p>
         <p className={styles.Description}>
           The nearest color is determined by simple Euclidian distance using a

@@ -27,6 +27,7 @@ export function ColorConvert() {
       <div className={styles.ColorConvert}>
         <div className={styles.ColorSelect}>
           <ColorSlider
+            label="Select grayscale color"
             scaleImage={`${basePath}/grayscale.png`}
             value={value}
             onChange={setValue}
@@ -54,6 +55,7 @@ export function ColorConvert() {
         </div>
         <div className={styles.ColorSelect}>
           <ColorSlider
+            label="Select Turbo color"
             scaleImage={`${basePath}/turbo.png`}
             value={value}
             onChange={setValue}
