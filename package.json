@@ -29,6 +29,11 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "files": [
+    "src",
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "dev": "next dev demo",
     "build": "npm run build:dist && npm run build:readme && npm run build:pages",
