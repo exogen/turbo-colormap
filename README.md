@@ -53,7 +53,7 @@ for performance purposes, this library minimizes object creation and copying as
 much as possible.
 
 When a Turbo RGB triplet is returned from the colormap, it will be the same
-`Uint8ClampedArray` each time (one for each color in the palette).  An exception
+`Uint8ClampedArray` each time (one for each color in the palette). An exception
 is the `interpolateNormalizedToTurbo` function, which creates a new array each
 time since it interpolates between Turbo colors.
 
@@ -283,6 +283,8 @@ helper does exactly that.
 <div align="center">
   <img width="480" src="./demo/public/cocktail.depth.jpg">
   <p>
-    <em>Image from my cocktail book, <a href="https://buymeacoffee.com/mosswood/e/303309">The Mosswood Cocktail Compendium</a>.</em>
+    <small>
+      <em>Image from my cocktail book, <a href="https://buymeacoffee.com/mosswood/e/303309">The Mosswood Cocktail Compendium</a>.</em>
+    </small>
   </p>
 </div>
