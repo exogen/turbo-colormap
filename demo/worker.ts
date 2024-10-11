@@ -3,7 +3,7 @@ import {
   convertGrayscaleBufferToTurbo,
 } from "..";
 
-const cache = new Map();
+const cache: Map<string, number> = new Map();
 
 type Job = {
   id: number;
@@ -15,7 +15,12 @@ type Job = {
   cache?: boolean;
 };
 
-function toGrayscale(buffer, options) {
+function toGrayscale(
+  buffer: ArrayBufferLike,
+  options: {
+    cache: Map<string, number>;
+  }
+) {
   const t0 = Date.now();
   const outputBuffer = convertTurboBufferToGrayscale(
     buffer,
@@ -28,7 +33,12 @@ function toGrayscale(buffer, options) {
   return outputBuffer;
 }
 
-function toTurbo(buffer, options) {
+function toTurbo(
+  buffer: ArrayBufferLike,
+  options: {
+    cache: Map<string, number>;
+  }
+) {
   const t0 = Date.now();
   const outputBuffer = convertGrayscaleBufferToTurbo(buffer, undefined);
   const t1 = Date.now();

@@ -108,13 +108,13 @@ search.
 
 | Function | Type |
 | ---------- | ---------- |
-| `snapColorToTurbo` | `(rgbColor: Color, cache?: Map<string, number> or undefined) => Uint8ClampedArray` |
+| `snapColorToTurbo` | `(rgbColor: Color, options?: { cache?: Map<string, number> or undefined; }) => Color` |
 
 Parameters:
 
 * `rgbColor`: An array-like RGB triplet.
-* `cache`: A Map to use as a lookup cache, to avoid repeated nearest-neighbor
-searches.
+* `options.cache`: A Map to use as a lookup cache, to avoid repeated
+nearest-neighbor searches.
 
 
 ### :gear: snapColorToIntensity
@@ -128,13 +128,13 @@ search.
 
 | Function | Type |
 | ---------- | ---------- |
-| `snapColorToIntensity` | `(rgbColor: Color, cache?: Map<string, number> or undefined) => number` |
+| `snapColorToIntensity` | `(rgbColor: Color, options?: { cache?: Map<string, number> or undefined; }) => number` |
 
 Parameters:
 
 * `rgbColor`: An array-like RGB triplet.
-* `cache`: A Map to use as a lookup cache, to avoid repeated nearest-neighbor
-searches.
+* `options.cache`: A Map to use as a lookup cache, to avoid repeated
+nearest-neighbor searches.
 
 
 ### :gear: snapNormalizedToTurbo

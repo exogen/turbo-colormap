@@ -153,13 +153,18 @@ export function intensityToTurbo(value: number): Color {
  * search.
  *
  * @param rgbColor An array-like RGB triplet.
- * @param cache A Map to use as a lookup cache, to avoid repeated nearest-neighbor
- *   searches.
+ * @param options.cache A Map to use as a lookup cache, to avoid repeated
+ *   nearest-neighbor searches.
  *
  * @returns A Turbo RGB triplet in a Uint8ClampedArray.
  */
-export function snapColorToTurbo(rgbColor: Color, cache?: Map<string, number>) {
-  const index = snapColorToIntensity(rgbColor, cache);
+export function snapColorToTurbo(
+  rgbColor: Color,
+  options: {
+    cache?: Map<string, number>;
+  } = {}
+): Color {
+  const index = snapColorToIntensity(rgbColor, options);
   return rgbColormap[index];
 }
 
@@ -172,15 +177,18 @@ export function snapColorToTurbo(rgbColor: Color, cache?: Map<string, number>) {
  * search.
  *
  * @param rgbColor An array-like RGB triplet.
- * @param cache A Map to use as a lookup cache, to avoid repeated nearest-neighbor
- *   searches.
+ * @param options.cache A Map to use as a lookup cache, to avoid repeated
+ *   nearest-neighbor searches.
  *
  * @returns An integer in the range 0-255.
  */
 export function snapColorToIntensity(
   rgbColor: Color,
-  cache?: Map<string, number>
+  options: {
+    cache?: Map<string, number>;
+  } = {}
 ): number {
+  const { cache } = options;
   let cacheKey: string | undefined;
   if (cache) {
     cacheKey = `${rgbColor[0]},${rgbColor[1]},${rgbColor[2]}`;
@@ -194,7 +202,7 @@ export function snapColorToIntensity(
   if (cache) {
     cache.set(cacheKey as string, bestValue);
   }
-  return bestValue as number;
+  return bestValue;
 }
 
 /**
@@ -242,7 +250,7 @@ export function interpolateNormalizedToTurbo(value: number): Color {
  *
  * @returns A Turbo RGB triplet in a Uint8ClampedArray.
  */
-export function grayscaleToTurbo(gray: Color) {
+export function grayscaleToTurbo(gray: Color): Color {
   const r = gray[0];
   const g = gray[1];
   const b = gray[2];
@@ -283,12 +291,11 @@ export function convertTurboBufferToGrayscale(
   targetBuffer: ArrayBufferLike = new ArrayBuffer(buffer.byteLength),
   options: { cache: Map<string, number> } = { cache: new Map() }
 ) {
-  const { cache } = options;
   const len = buffer.byteLength;
   const targetArray = new Uint8ClampedArray(targetBuffer);
   for (let i = 0; i < len; i += 4) {
     const color = new Uint8ClampedArray(buffer, i, 4);
-    const intensity = snapColorToIntensity(color, cache);
+    const intensity = snapColorToIntensity(color, options);
     targetArray[i] = intensity;
     targetArray[i + 1] = intensity;
     targetArray[i + 2] = intensity;
@@ -316,12 +323,11 @@ export function convertColorBufferToTurbo(
   targetBuffer: ArrayBufferLike = new ArrayBuffer(buffer.byteLength),
   options: { cache: Map<string, number> } = { cache: new Map() }
 ) {
-  const { cache } = options;
   const len = buffer.byteLength;
   const targetArray = new Uint8ClampedArray(targetBuffer);
   for (let i = 0; i < len; i += 4) {
     const color = new Uint8ClampedArray(buffer, i, 4);
-    const turboColor = snapColorToTurbo(color, cache);
+    const turboColor = snapColorToTurbo(color, options);
     targetArray[i] = turboColor[0];
     targetArray[i + 1] = turboColor[1];
     targetArray[i + 2] = turboColor[2];
