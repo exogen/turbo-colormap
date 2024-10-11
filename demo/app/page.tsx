@@ -2,6 +2,11 @@ import styles from "./page.module.css";
 import { FaGithub } from "react-icons/fa";
 import { ColorConvert, ImageConvert, Quantizer } from "./components";
 
+export const metadata = {
+  title:
+    "turbo-colormap: A TypeScript library for working with the Turbo colormap",
+};
+
 const DemoPage = () => {
   return (
     <>
