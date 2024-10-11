@@ -48,7 +48,8 @@
     "build": "npm run build:dist && npm run build:readme && npm run build:pages",
     "build:dist": "tshy",
     "build:pages": "next build demo && touch docs/.nojekyll",
-    "build:readme": "tsdoc --src=src/index.ts"
+    "build:readme": "tsdoc --src=src/index.ts",
+    "prepare": "npm run build:dist"
   },
   "devDependencies": {
     "@types/node": "22.7.5",
