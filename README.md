@@ -281,10 +281,9 @@ helper does exactly that.
 <br><hr><br>
 
 <div align="center">
-  <img width="480" src="./demo/public/cocktail.depth.jpg">
-  <p>
-    <small>
-      <em>Image from my cocktail book, <a href="https://buymeacoffee.com/mosswood/e/303309">The Mosswood Cocktail Compendium</a>.</em>
-    </small>
-  </p>
+
+<img width="480" src="./demo/public/cocktail.depth.jpg">
+
+*Image from my cocktail book, [The Mosswood Cocktail Compendium](https://buymeacoffee.com/mosswood/e/303309).*
+
 </div>
