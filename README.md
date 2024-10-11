@@ -4,10 +4,11 @@
 
 </div>
 
-A TypeScript library for working with Turbo, an improved rainbow colormap for
-visualization, often used for depth maps. In addition to the library, you can
-also use [the demo page](https://exogen.github.io/turbo-colormap/) to perform
-quick color and image conversions.
+A TypeScript library for working with Turbo, an improved rainbow colormap for visual&shy;ization.
+Turbo is often used for depth maps. This library includes the ability to “uncolormap”
+Turbo, converting values back to normalized floats or grayscale intensities. In
+addition to the library, you can also use [the demo page](https://exogen.github.io/turbo-colormap/)
+to perform quick color and image conversions.
 
 Note: this library generates more faithful values than the d3 approximation of
 Turbo found in [d3-scale-chromatic](https://github.com/d3/d3-scale-chromatic).
