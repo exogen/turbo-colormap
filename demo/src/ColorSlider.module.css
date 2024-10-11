@@ -1,68 +1,49 @@
 .Container {
   flex: 0 0 auto;
   position: relative;
-  margin: 4px;
+  padding: 20px 0 0 0;
   --outline-color: rgb(0, 136, 255);
 }
 
-.Indicator {
-  position: absolute;
-  top: 3px;
-  transform: translateX(-8px) rotate(180deg);
-  transform-origin: 50% 50%;
-  font-size: 16px;
-  pointer-events: none;
-  overflow: visible;
-}
-
-input.ColorSlider[type="range"] {
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  cursor: pointer;
-  width: 256px;
-  height: 60px;
-  padding: 0;
-  margin: 0;
-}
-
-input.ColorSlider[type="range"]:focus {
-  outline: none;
-}
-
-/* track */
-input.ColorSlider[type="range"]::-webkit-slider-runnable-track,
-input.ColorSlider[type="range"]::-moz-range-track {
-  -webkit-apperance: none;
-  appearance: none;
-  display: block;
+.RangeTrack {
+  position: relative;
   background-image: var(--color-gradient);
   background-repeat: repeat-y;
   background-size: 100% 100%;
-  /* background: red; */
   border-radius: 0;
-  width: 100%;
+  width: 256px;
   height: 24px;
   margin: 0;
   padding: 0;
 }
 
-input.ColorSlider[type="range"]:focus::-webkit-slider-runnable-track,
-input.ColorSlider[type="range"]:focus::-moz-range-track {
+.RangeTrack:focus {
   outline: 2px solid var(--outline-color);
 }
 
-/* thumb */
-input.ColorSlider[type="range"]::-webkit-slider-thumb,
-input.ColorSlider[type="range"]::-moz-range-thumb {
-  -webkit-apperance: none;
-  appearance: none;
-  border: none;
-  border-radius: 0;
-  visibility: hidden;
+.Indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -19px;
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  overflow: visible;
+  transform: translate(146px, -8px);
 }
 
-input.ColorSlider[type="range"]:focus ~ .Indicator {
+.Indicator svg {
+  transform-origin: 50% 50%;
+  transform: rotate(180deg);
+  overflow: visible;
+}
+
+.Indicator:focus {
+  outline: none;
+}
+
+.Indicator:focus svg {
   stroke-width: 2px;
   stroke: var(--outline-color);
 }

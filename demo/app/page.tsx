@@ -16,11 +16,15 @@ const DemoPage = () => {
         <a href="https://research.google/blog/turbo-an-improved-rainbow-colormap-for-visualization/">
           Turbo
         </a>
-        , an improved rainbow colormap for visual&shy;ization, often used for
-        depth maps. In addition to the library, you can also use this demo page
-        to perform quick color and image conversions. Note: this library
-        generates more faithful values than the d3 approx&shy;imation of Turbo
-        found in{" "}
+        , an improved rainbow colormap for visual&shy;ization. Turbo is often
+        used for depth maps. This library includes the ability to “uncolormap”
+        Turbo, converting values back to normalized floats or grayscale
+        intensities. In addition to the library, you can also use this demo page
+        to perform quick color and image conversions.
+      </p>
+      <p>
+        This library generates more faithful values than the d3
+        approx&shy;imation of Turbo found in{" "}
         <a href="https://github.com/d3/d3-scale-chromatic">
           d3-scale-chromatic
         </a>
@@ -49,21 +53,6 @@ const DemoPage = () => {
       </section>
       <section>
         <h2>
-          <em>nearest color</em>
-        </h2>
-        <p className={styles.Description}>
-          Snap arbitrary RGB colors to the indexed Turbo palette. This is mostly
-          useful for visual&shy;izations exported with an approx&shy;imation of
-          Turbo or a lossy format (like JPEG).
-        </p>
-        <p className={styles.Description}>
-          The nearest color is determined by simple Euclidian distance using a
-          k-d tree.
-        </p>
-        <Quantizer />
-      </section>
-      <section>
-        <h2>
           <em>image converter</em>
         </h2>
         <p className={styles.Description}>
@@ -72,6 +61,23 @@ const DemoPage = () => {
           done client-side; all data stays in your browser.
         </p>
         <ImageConvert />
+      </section>
+      <section>
+        <h2>
+          <em>nearest color</em>
+        </h2>
+        <p className={styles.Description}>
+          Snap arbitrary colors to the indexed Turbo palette. This can yield
+          surprising results with much of the sRGB color space; it’s mostly
+          useful for interpreting visual&shy;izations exported with an
+          approx&shy;imation of Turbo or a lossy format like JPEG, where the
+          colors won’t be in the Turbo lookup table.
+        </p>
+        <p className={styles.Description}>
+          The nearest color is determined by simple Euclidian distance using a
+          k-d tree.
+        </p>
+        <Quantizer />
       </section>
     </>
   );

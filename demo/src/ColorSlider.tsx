@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
+import { Range } from "react-range";
 import { BsTriangleFill } from "react-icons/bs";
 import styles from "./ColorSlider.module.css";
 
@@ -44,14 +45,13 @@ export default function ColorSlider({
 
   return (
     <div className={`${styles.Container} ${className ?? ""}`}>
-      <input
-        className={styles.ColorSlider}
-        type="range"
+      <Range
+        label="Select your value"
+        step={1}
         min={0}
         max={255}
-        style={style}
-        onChange={(event) => {
-          const value = parseInt(event.target.value, 10);
+        values={[value]}
+        onChange={([value]) => {
           if (valueFromProps == null) {
             setControlledValue(value);
           }
@@ -59,12 +59,20 @@ export default function ColorSlider({
             onChange(value);
           }
         }}
-      />
-      <BsTriangleFill
-        className={styles.Indicator}
-        style={{
-          left: value,
-        }}
+        renderTrack={({ props, children }) => (
+          <div
+            {...props}
+            style={{ ...props.style, ...style }}
+            className={styles.RangeTrack}
+          >
+            {children}
+          </div>
+        )}
+        renderThumb={({ props }) => (
+          <div {...props} key={props.key} className={styles.Indicator}>
+            <BsTriangleFill />
+          </div>
+        )}
       />
     </div>
   );
