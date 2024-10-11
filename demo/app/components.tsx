@@ -16,6 +16,8 @@ import ColorSlider from "../src/ColorSlider";
 import "react-color-palette/css";
 import styles from "./page.module.css";
 
+const basePath = "/turbo-colormap";
+
 export function ColorConvert() {
   const [value, setValue] = useState(165);
   const rgbColor = intensityToTurbo(value);
@@ -25,7 +27,7 @@ export function ColorConvert() {
       <div className={styles.ColorConvert}>
         <div className={styles.ColorSelect}>
           <ColorSlider
-            scaleImage="/grayscale.png"
+            scaleImage={`${basePath}/grayscale.png`}
             value={value}
             onChange={setValue}
           />
@@ -52,7 +54,7 @@ export function ColorConvert() {
         </div>
         <div className={styles.ColorSelect}>
           <ColorSlider
-            scaleImage="/turbo.png"
+            scaleImage={`${basePath}/turbo.png`}
             value={value}
             onChange={setValue}
           />
@@ -310,7 +312,7 @@ export function ImageConvert() {
         <FaChevronDown className={styles.DownArrow} />
       </p>
       <ImageUploader
-        defaultImageUrl="/cocktail.depth.jpg"
+        defaultImageUrl={`${basePath}/cocktail.depth.jpg`}
         onImageReady={onTurboReady}
         dropMessage="drop to upload Turbo image"
         imageData={jobResult?.target === "turbo" ? jobResult : null}
@@ -328,7 +330,9 @@ export function ImageConvert() {
       />
       {enabled ? null : (
         <div className={styles.Blocker}>
-          <p>Demo conversion paused to save CPU.</p>
+          <p>
+            This demo will consume a little CPU and needs to be enabled first.
+          </p>
           <button
             className={styles.UnblockButton}
             onClick={() => {
@@ -336,6 +340,9 @@ export function ImageConvert() {
             }}
           >
             Enable
+            <strong>
+              <em>!</em>
+            </strong>
           </button>
         </div>
       )}

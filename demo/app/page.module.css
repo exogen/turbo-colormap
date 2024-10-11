@@ -210,13 +210,23 @@
   align-items: center;
   text-align: center;
   justify-content: center;
+  gap: 20px;
   color: #fff;
   font-size: calc(15rem / 16);
   line-height: calc(22 / 15);
+  padding: 12px 24px;
+}
+
+.Blocker p {
+  text-wrap: balance;
 }
 
 .UnblockButton {
-  margin: 20px;
+  background: var(--pink-400);
+  color: #fff;
+  border: 0;
+  padding: 8px 20px;
+  border-radius: 5px;
 }
 
 @media (max-width: 479px) {
