@@ -14,7 +14,8 @@ to perform quick color and image conversions.
 Note: this library generates more faithful values than the d3 approximation of
 Turbo found in [d3-scale-chromatic](https://github.com/d3/d3-scale-chromatic).
 
-👉 **[Try the interactive demo page](https://exogen.github.io/turbo-colormap/)**
+> [!TIP]
+> 👉 **[Try the interactive demo page!](https://exogen.github.io/turbo-colormap/)**
 
 ## Install
 
@@ -58,8 +59,9 @@ When a Turbo RGB triplet is returned from the colormap, it will be the same
 is the `interpolateNormalizedToTurbo` function, which creates a new array each
 time since it interpolates between Turbo colors.
 
-It is important you don’t mutate the returned RGB values without copying them
-into your own array first.
+> [!CAUTION]
+> It is important you don’t mutate the returned RGB values without copying them
+> into your own array first.
 
 Any RGB triplet parameters accepted by the functions in this library need only
 to be array-like. This reduces the need for copying, because you can supply
